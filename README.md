@@ -1,10 +1,10 @@
 # Secure Link Checker
 
-Secure Link Checker is a Flask-based web application that scans URLs for potential security threats using the VirusTotal API. It allows users to input a URL or text containing URLs, extracts domain names, and performs concurrent security scans on multiple URLs.
+Secure Link Checker is a Flask-based web application that scans URLs for potential security threats using the VirusTotal API. It allows users to input a URL (website url), extracts domain names, and performs concurrent security scans on multiple URLs.
 
 ## Features
 
-- Extract domain names from input text
+- Extract domain names from input website URL
 - Scan multiple URLs concurrently
 - Display scan results from VirusTotal
 - Limit concurrent API requests to avoid rate limiting
