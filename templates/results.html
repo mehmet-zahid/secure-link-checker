@@ -1,0 +1,39 @@
+{% if api_limited %}
+<div class="notification">
+    <p>Due to VirusTotal public API limitations, only the first 4 URLs out of {{ original_url_count }} have been checked. For unlimited checks, consider <a href="https://www.virustotal.com/gui/join-us" target="_blank">getting your own API key</a>.</p>
+</div>
+{% endif %}
+
+{% if error %}
+<div class="error-message">
+    <p>{{ error }}</p>
+</div>
+{% else %}
+<h2>Results</h2>
+{% for result in results %}
+<div class="result-card">
+    <h3>{{ result.url }}</h3>
+    {% if result.scan_result %}
+    <div class="scan-result">
+        {% set total = result.scan_result.harmless + result.scan_result.suspicious + result.scan_result.malicious %}
+        {% if total > 0 %}
+        <div class="progress-bar">
+            <div class="progress harmless" data-width="{{ (result.scan_result.harmless / total) * 100 }}"></div>
+            <div class="progress suspicious" data-width="{{ (result.scan_result.suspicious / total) * 100 }}"></div>
+            <div class="progress malicious" data-width="{{ (result.scan_result.malicious / total) * 100 }}"></div>
+        </div>
+        {% else %}
+        <p>No scan data available.</p>
+        {% endif %}
+        <ul>
+            <li><span class="dot harmless"></span> Harmless: {{ result.scan_result.harmless }}</li>
+            <li><span class="dot suspicious"></span> Suspicious: {{ result.scan_result.suspicious }}</li>
+            <li><span class="dot malicious"></span> Malicious: {{ result.scan_result.malicious }}</li>
+        </ul>
+    </div>
+    {% else %}
+    <p class="error-message">Failed to get scan result for this URL.</p>
+    {% endif %}
+</div>
+{% endfor %}
+{% endif %}
