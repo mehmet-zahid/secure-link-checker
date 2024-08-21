@@ -8,17 +8,27 @@
     --malicious-color: #e74c3c;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--background-color);
-    margin: 0;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
     max-width: 800px;
+    width: 100%;
     margin: 0 auto;
     padding: 20px;
 }
@@ -37,6 +47,9 @@ h1 {
 
 form {
     margin-bottom: 2rem;
+}
+main {
+    flex: 1 0 auto;
 }
 
 .input-group {
@@ -158,8 +171,8 @@ li .label span {
 
 
 footer {
+    flex-shrink: 0;
     text-align: center;
-    margin-top: 2rem;
     padding: 1rem;
     background-color: var(--secondary-color);
     color: white;

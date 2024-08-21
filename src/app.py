@@ -4,7 +4,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import random
 
 from virustotal import scan_url, get_result
-from utils import extract_urls
+from domain_extractor import extract_domain_names
 
 CONCURRENT_REQUESTS = 10
 
@@ -41,7 +41,7 @@ def url_check():
         if not url:
             return render_template("results.html", error="Please provide a URL")
 
-        urls = extract_urls(url)
+        urls = extract_domain_names(url)
         if not urls:
             return render_template(
                 "results.html",
