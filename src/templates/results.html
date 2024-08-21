@@ -1,6 +1,6 @@
 {% if api_limited %}
 <div class="notification">
-    <p>Due to VirusTotal public API limitations, only the first 4 URLs out of {{ original_url_count }} have been checked. For unlimited checks, consider <a href="https://www.virustotal.com/gui/join-us" target="_blank">getting your own API key</a>.</p>
+    <p>Due to VirusTotal public API limitations, only {{ concurrency_limit}} Random URLs out of {{ original_url_count }} have been checked. For unlimited checks, consider <a href="https://www.virustotal.com/gui/join-us" target="_blank">getting your own API key</a>.</p>
 </div>
 {% endif %}
 

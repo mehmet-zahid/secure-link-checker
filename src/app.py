@@ -77,6 +77,7 @@ def url_check():
         "results.html",
         results=results,
         api_limited=api_limited,
+        concurrency_limit=CONCURRENT_REQUESTS,
         original_url_count=original_url_count,
     )
 
