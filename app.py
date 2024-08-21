@@ -6,6 +6,8 @@ import random
 from virustotal import scan_url, get_result
 from utils import extract_urls
 
+CONCURRENT_REQUESTS = 10
+
 
 app = Flask(__name__)
 
@@ -50,11 +52,11 @@ def url_check():
 
         # API limitation
         original_url_count = len(urls)
-        urls = urls[:4] if len(urls) > 4 else urls
-        api_limited = original_url_count > 4
+        urls = urls[:CONCURRENT_REQUESTS] if len(urls) > CONCURRENT_REQUESTS else urls
+        api_limited = original_url_count > CONCURRENT_REQUESTS
 
         results = []
-        with ThreadPoolExecutor(max_workers=4) as executor:
+        with ThreadPoolExecutor(max_workers=CONCURRENT_REQUESTS) as executor:
             future_to_url = {executor.submit(process_url, url): url for url in urls}
             for future in as_completed(future_to_url):
                 result = future.result()

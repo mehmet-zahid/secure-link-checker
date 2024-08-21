@@ -9,7 +9,11 @@
     <p>{{ error }}</p>
 </div>
 {% else %}
-<h2>Results</h2>
+<div class="result-header-container">
+    <h2>Results</h2>
+    <p class="result-count">{{ results|length }} out of {{ original_url_count }} URLs checked</p>
+</div>
+
 {% for result in results %}
 <div class="result-card">
     <h3>{{ result.url }}</h3>

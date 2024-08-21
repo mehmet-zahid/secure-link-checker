@@ -74,6 +74,27 @@ button:hover {
     border-radius: 4px;
 }
 
+.result-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.result-header-container h2 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+}
+
+.result-count {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+}
+
 .result-card {
     background-color: white;
     border-radius: 4px;
